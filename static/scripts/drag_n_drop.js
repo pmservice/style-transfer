@@ -76,7 +76,7 @@ var clean_env_clicked = function(evt){
 }
 
 var transfer_style_clicked = function(evt){
-    iterations = $("#iterations")[0].value;
+    iterations = parseInt($("#iterations").html());
 
     if(iterations < 1) {
         $("#resultErrors").attr("style", "display: block");
@@ -86,7 +86,7 @@ var transfer_style_clicked = function(evt){
 
     $("#resultErrors").attr("style", "display: none");
     $("#runButton").prop("disabled", true);
-    $("#iterations").prop("disabled", true);
+    $("#iterationsSlider").prop("disabled", true);
     disable_divs("#styleImage", "droparea dropareaDisabled")
     disable_divs("#baseImage", "droparea dropareaDisabled")
 
@@ -110,7 +110,7 @@ var transfer_style_clicked = function(evt){
         runId = data.training_run_uid
 
         $("#runButton").prop("disabled", false);
-        $("#iterations").prop("disabled", false);
+        $("#iterationsSlider").prop("disabled", false);
         enable_divs("#styleImage", "droparea", dropHandlerSet)
         enable_divs("#baseImage", "droparea", dropHandlerSet)
 
@@ -132,7 +132,7 @@ var transfer_style_clicked = function(evt){
     }).catch(function (error) {
         error = error.responseText;
         $("#runButton").prop("disabled", false);
-        $("#iterations").prop("disabled", false);
+        $("#iterationsSlider").prop("disabled", false);
         enable_divs("#styleImage", "droparea", dropHandlerSet)
         enable_divs("#baseImage", "droparea", dropHandlerSet)
         var errorMsg = 'Failed while transfering style: ' + JSON.stringify(error);

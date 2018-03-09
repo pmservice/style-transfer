@@ -36,7 +36,7 @@
   	});
 
 </script>
-<h1>Make your photos <span style="color: #337ab7; font-style: italic; font-size: 120%;">stylish</span></h1>
+<h3>Make your photos <span style="color: #337ab7; font-style: italic">stylish</span></h3>
 <hr />
 	<div class="centeringDiv bottomSpaced">
 		<div id="styleImage" class="droparea" style="display: inline-block">
@@ -47,20 +47,20 @@
 			Drag & drop base image
 		</div>
 	</div>
-	<div class="form-inline">
-  		<div class="form-group">
-			<label for="iterations" style="margin-right: 5px">Number of iterations: </label>
-			<input id="iterations" type="number" class="form-control" min="1" max="20" step="1" value="1"/>
-		</div>
-	</div>
 	<div id="uploadImagesErrors" class="alert alert-danger" style="display: none"></div>
 	<div class="centeringDiv">
-		<div class="centeredDiv">
-			<button id="runButton" type="button" class="btn btn-primary btn-lg bottomSpaced">Transfer style</button>
+		<div class="centeredDiv bottomSpaced">
+			<label for="iterations" style="margin-right: 5px" class="inline">Intensity: </label>
+			<div class="slidecontainer inline" style="width: 200px">
+				<input type="range" min="1" max="20" value="1" id="iterationsSlider" />
+			</div>
+			<span id="iterations" class="inline" style="margin-right: 20px"></span>
+			<button id="runButton" type="button" class="btn btn-primary btn-lg inline">Transfer style</button>
 		</div>
 		<div id="resultImage"></div>
 		<div id="resultErrors" class="alert alert-danger" style="display: none"></div>
 	</div>
+	<script src="scripts/slider.js"></script>
 	<script src="scripts/image_api.js"></script>
 	<script src="scripts/drag_n_drop.js"></script>
 </body>
