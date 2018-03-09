@@ -1,0 +1,94 @@
+body {
+    background-image: url("/staticImages/background.png");
+    background-size: cover;
+    font-family: Helvetica Neue, sans-serif;
+}
+
+h1 {
+	color: #797979;
+	font-family: Helvetica Neue Light, Helvetica Neue, sans-serif;
+	padding-top: 10px;
+}
+
+hr {
+    border-color: lightgray;
+    border-width: 1px;
+}
+
+.tableHolder {
+    padding: 30px;
+}
+
+.droptable {
+    width: 100%;
+}
+
+.droptd {
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 0;
+}
+
+.droparea {
+    width: 400px;
+    height: 300px;
+    border-style: dashed;
+    border-width: 3px;
+    border-color: gray;
+    float: center;
+    color: gray;
+    line-height: 300px;
+    text-align: center;
+    margin: auto;
+}
+
+.droparea:hover {
+    border-color: #337ab7;
+    color: #337ab7;
+}
+
+.dropareaDisabled {
+    border-color: lightgray;
+}
+
+.dropareaDisabled:hover {
+    border-color: lightgray;
+}
+
+.dropareaDisabled img {
+    opacity: 0.5;
+}
+
+.dropareaDisabled:hover img {
+    opacity: 0.5;
+}
+
+.droppedImage {
+    height: 90%;
+    width: 90%;
+    object-fit: contain;
+    margin-bottom: 8px;
+}
+
+.centeringDiv {
+ text-align: center;
+}
+
+.centeredDiv {
+    display: inline-block;
+}
+
+.bottomSpaced {
+    margin-bottom: 30px;
+}
+
+.resultImage {
+    height: auto;
+    width: auto;
+    max-width: 600px;
+    max-height: 600px;
+    border: white;
+    border-width: 9px;
+    border-style: solid;
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Style transfer sample app</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="stylesheets/style.css" />
+	<script src="/scripts/socket.io.js"></script>
+</head>
+<body class="container">
+<script>
+	window.addEventListener("dragover",function(e){
+  		e = e || event;
+  		e.preventDefault();
+	},false);
+	window.addEventListener("drop",function(e){
+  		e = e || event;
+  		e.preventDefault();
+	},false);
+
+	var socket = io();
+  	socket.on('connect', function(){
+  		console.log("SocketIO connected.");
+  	});
+
+  	socket.on('experiment_feedback', function(msg){
+  		console.log(msg)
+  		$("#progressMessage").html(msg);
+  	});
+
+  	socket.on('disconnect', function(){
+  		console.log("SocketIO disconnected.");
+  	});
+
+</script>
+<h1>Make your photos <span style="color: #337ab7; font-style: italic; font-size: 120%;">stylish</span></h1>
+<hr />
+	<div class="centeringDiv bottomSpaced">
+		<div id="styleImage" class="droparea" style="display: inline-block">
+			Drag & drop style sample image
+		</div>
+		<img src="/staticImages/style_arrow.png" style="width: 100px; margin: 5px; display: inline-block" />
+		<div id="baseImage" class="droparea" style="display: inline-block">
+			Drag & drop base image
+		</div>
+	</div>
+	<div class="form-inline">
+  		<div class="form-group">
+			<label for="iterations" style="margin-right: 5px">Number of iterations: </label>
+			<input id="iterations" type="number" class="form-control" min="1" max="20" step="1" value="1"/>
+		</div>
+	</div>
+	<div id="uploadImagesErrors" class="alert alert-danger" style="display: none"></div>
+	<div class="centeringDiv">
+		<div class="centeredDiv">
+			<button id="runButton" type="button" class="btn btn-primary btn-lg bottomSpaced">Transfer style</button>
+		</div>
+		<div id="resultImage"></div>
+		<div id="resultErrors" class="alert alert-danger" style="display: none"></div>
+	</div>
+	<script src="scripts/image_api.js"></script>
+	<script src="scripts/drag_n_drop.js"></script>
+</body>
+</html>

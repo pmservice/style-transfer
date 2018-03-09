@@ -1,0 +1,13 @@
+{
+  "apikey": <api key>,
+  "cos_hmac_keys": {
+    "access_key_id": <key id>,
+    "secret_access_key": <secret>
+  },
+  "endpoints": "https://cos-service.bluemix.net/endpoints",
+  "iam_apikey_description": "Auto generated apikey during resource-key operation for Instance",
+  "iam_apikey_name": <api key name>,
+  "iam_role_crn": "crn:v1:bluemix:public:iam::::serviceRole:Writer",
+  "iam_serviceid_crn": <crn>,
+  "resource_instance_id": <instance id>
+}
