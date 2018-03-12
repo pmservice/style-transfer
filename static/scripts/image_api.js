@@ -13,6 +13,17 @@ var send_image = function(file) {
     return $.ajax(req);
 }
 
+var get_transfer_status = function(experiment_run_uid) {
+    var req = {
+        url: "/images/transferStyle/" + experiment_run_uid,
+        method: "get",
+        processData: false,
+        contentType: false
+    };
+
+    return $.ajax(req);
+}
+
 var transfer_style = function(styleImage, baseImage, iteration=1) {
     var req = {
         url: "/images/transferStyle?styleImage="+styleImage+"&baseImage="+baseImage+"&iteration=" + iteration,

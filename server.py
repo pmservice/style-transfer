@@ -6,12 +6,9 @@ import json
 from cos_helper import COSHelper
 from wml_helper import WMLHelper
 from get_vcap import get_wml_vcap, get_cos_vcap
-import eventlet
-eventlet.monkey_patch()
-
 
 app = Flask(__name__, static_url_path='/static')
-app.config['SECRET_KEY'] = 'secret!'
+#app.config['SECRET_KEY'] = 'secret!'
 socketio = SocketIO(app)
 
 wml_vcap = get_wml_vcap()
@@ -22,7 +19,6 @@ service_endpoint = 'https://s3-api.us-geo.objectstorage.softlayer.net'
 
 cos_client = COSHelper(wml_vcap, cos_vcap, auth_endpoint, service_endpoint)
 wml_client = WMLHelper(wml_vcap, cos_vcap, auth_endpoint, service_endpoint)
-
 
 filename = "vgg19_weights_tf_dim_ordering_tf_kernels_notop.h5"
 cos_client.save_local_file(filename, "data")
@@ -49,6 +45,7 @@ def send_img(path):
 
 
 def send_experiment_feedback(msg):
+    print(msg)
     socketio.emit("experiment_feedback", msg)
 
 
@@ -68,18 +65,51 @@ def send_image():
 
 
 @app.route("/images/transferStyle", methods=["POST"])
-def transfer_style():
+def init_transfer_style():
     try:
         style_image = urllib.parse.unquote(request.args.get('styleImage')).replace(" ", "_")
         base_image = urllib.parse.unquote(request.args.get('baseImage')).replace(" ", "_")
         iteration = request.args.get('iteration', 1)
         print('Transfering style initialized for params: {}, {}, {}'.format(style_image, base_image, iteration))
-        result = wml_client.transfer_style(style_image, base_image, iteration, send_experiment_feedback)
+
+        send_experiment_feedback("Storing definition...")
+        definition_details = wml_client._store_definition(style_image, base_image, iteration)
+        definition_url = wml_client.client.repository.get_definition_url(definition_details)
+        definition_uid = wml_client.client.repository.get_definition_uid(definition_details)
+
+        send_experiment_feedback("Storing experiment...")
+        experiment_details = wml_client._store_experiment(definition_url)
+        experiment_uid = wml_client.client.repository.get_experiment_uid(experiment_details)
+
+        send_experiment_feedback("Running experiment...")
+        experiment_run_details = wml_client.client.experiments.run(experiment_uid, asynchronous=True)
+        experiment_run_uid = wml_client.client.experiments.get_run_uid(experiment_run_details)
+
+        training_run_uids = wml_client.client.experiments.get_training_uids(experiment_run_details)
+        training_run_uid = training_run_uids[0]
+
+        result = {
+            "result_image_id": base_image.split(".")[0] + "__at_iteration_" + str(int(iteration) - 1) + ".png",
+            "definition_uid": definition_uid,
+            "experiment_uid": experiment_uid,
+            "experiment_run_uid": experiment_run_uid,
+            "training_run_uid": training_run_uid
+        }
+
+        return Response(json.dumps(result), mimetype=u'application/json')
     except Exception as e:
         print('Exception during transfering style: ', e)
         abort(500, e)
 
-    return Response(json.dumps(result), mimetype=u'application/json')
+
+@app.route("/images/transferStyle/<experiment_run_uid>", methods=["GET"])
+def get_transfer_style_status(experiment_run_uid):
+    status = wml_client.client.experiments.get_status(experiment_run_uid)
+    print(status)
+    # status['current_iteration']
+    state = status['state']
+    send_experiment_feedback("Running experiment: state changed to '{}'".format(state))
+    return Response(json.dumps(status), mimetype=u'application/json')
 
 
 @app.route("/images/<image_name>", methods=["GET"])
@@ -130,4 +160,4 @@ def clean_env():
 
 print('Running server...')
 socketio.run(app, host='0.0.0.0', port=8080)
-app.run('0.0.0.0', 8080)
+#app.run('0.0.0.0', 8080)

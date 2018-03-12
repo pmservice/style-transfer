@@ -70,48 +70,6 @@ class WMLHelper:
         print('Deleting experiment: {}'.format(experiment_uid))
         self.client.repository.delete(experiment_uid)
 
-    def transfer_style(self, style_image, base_image, iteration=1, callback = None):
-        if callback is not None:
-            callback("Storing definition...")
-        definition_details = self._store_definition(style_image, base_image, iteration)
-        definition_url = self.client.repository.get_definition_url(definition_details)
-        definition_uid = self.client.repository.get_definition_uid(definition_details)
-        if callback is not None:
-            callback("Storing experiment...")
-        experiment_details = self._store_experiment(definition_url)
-        experiment_uid = self.client.repository.get_experiment_uid(experiment_details)
-        if callback is not None:
-            callback("Running experiment...")
-        experiment_run_details = self.client.experiments.run(experiment_uid, asynchronous=True)
-        experiment_run_uid = self.client.experiments.get_run_uid(experiment_run_details)
-
-        training_run_uids = self.client.experiments.get_training_uids(experiment_run_details)
-        training_run_uid = training_run_uids[0]
-
-        state = 'initialized'
-        last_state = state
-        while state not in ['error', 'completed', 'canceled']:
-            status = self.client.experiments.get_status(experiment_run_uid)
-            # status['current_iteration']
-            state = status['state']
-            if state != last_state:
-                if callback is not None:
-                    callback("Running experiment: state changed to '{}'".format(state))
-                last_state = state
-
-        if state == 'error':
-            self.client.training.monitor_logs(training_run_uid)
-            train_status = self.client.training.get_status(training_run_uid)
-            raise Exception(str(train_status['message']))
-
-        return {
-            "result_image_id": base_image.split(".")[0] + "__at_iteration_" + str(int(iteration) - 1) + ".png",
-            "definition_uid": definition_uid,
-            "experiment_uid": experiment_uid,
-            "experiment_run_uid": experiment_run_uid,
-            "training_run_uid": training_run_uid
-        }
-
     def delete_run(self, run_uid):
         print('Deleting run: {}'.format(run_uid))
         self.client.training.delete(run_uid)

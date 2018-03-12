@@ -1,7 +1,6 @@
-Flask==0.11
-flask-socketio==2.9.5
-eventlet==0.22.1
 urllib3==1.22
 ibm-cos-sdk==2.0.0
 watson-machine-learning-client==0.3.702
 cfenv==0.5.3
+Flask==0.11.1
+flask-socketio==2.9.5
