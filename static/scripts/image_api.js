@@ -15,7 +15,7 @@ var send_image = function(file) {
 
 var get_transfer_status = function(experiment_run_uid) {
     var req = {
-        url: "/images/transferStyle/" + experiment_run_uid,
+        url: `/images/transferStyle/${experiment_run_uid}?msgUUID=${socketIOSessionUid}`,
         method: "get",
         processData: false,
         contentType: false
@@ -26,7 +26,7 @@ var get_transfer_status = function(experiment_run_uid) {
 
 var transfer_style = function(styleImage, baseImage, iteration=1) {
     var req = {
-        url: "/images/transferStyle?styleImage="+styleImage+"&baseImage="+baseImage+"&iteration=" + iteration,
+        url: `/images/transferStyle?styleImage=${styleImage}&baseImage=${baseImage}&iteration=${iteration}&msgUUID=${socketIOSessionUid}`,
         method: "post",
         processData: false,
         contentType: false

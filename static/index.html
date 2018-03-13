@@ -35,6 +35,17 @@
   		console.log("SocketIO disconnected.");
   	});
 
+  	function guid() {
+		function s4() {
+			return Math.floor((1 + Math.random()) * 0x10000)
+				.toString(16)
+				.substring(1);
+		}
+		return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+	}
+
+	socketIOSessionUid = guid();
+
 </script>
 <div id="header">
 	<h3>STYLE TRANSFER SAMPLE APPLICATION</h3>

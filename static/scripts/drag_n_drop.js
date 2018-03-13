@@ -102,6 +102,7 @@ var transfer_op_error = function(error) {
 }
 
 var transfer_style_clicked = function(evt){
+    socket.emit("create_connection", socketIOSessionUid)
     iterations = parseInt($("#iterations").html());
 
     if(iterations < 1) {

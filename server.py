@@ -1,5 +1,5 @@
 from flask import Flask, send_from_directory, request, make_response, Response, abort
-from flask_socketio import SocketIO
+from flask_socketio import SocketIO, join_room
 import urllib
 from werkzeug.utils import secure_filename
 import json
@@ -8,7 +8,6 @@ from wml_helper import WMLHelper
 from get_vcap import get_wml_vcap, get_cos_vcap
 
 app = Flask(__name__, static_url_path='/static')
-#app.config['SECRET_KEY'] = 'secret!'
 socketio = SocketIO(app)
 
 wml_vcap = get_wml_vcap()
@@ -22,6 +21,11 @@ wml_client = WMLHelper(wml_vcap, cos_vcap, auth_endpoint, service_endpoint)
 
 filename = "vgg19_weights_tf_dim_ordering_tf_kernels_notop.h5"
 cos_client.save_local_file(filename, "data")
+
+
+@socketio.on('create_connection')
+def on_create_connection(msg_uuid):
+    join_room(msg_uuid)
 
 
 @app.route('/')
@@ -44,9 +48,9 @@ def send_img(path):
     return send_from_directory('static/images', path)
 
 
-def send_experiment_feedback(msg):
+def send_experiment_feedback(msg, msg_uuid):
     print(msg)
-    socketio.emit("experiment_feedback", msg)
+    socketio.emit("experiment_feedback", msg, room=msg_uuid)
 
 
 @app.route("/images", methods=["POST"])
@@ -71,18 +75,19 @@ def init_transfer_style():
         style_image = urllib.parse.unquote(request.args.get('styleImage')).replace(" ", "_")
         base_image = urllib.parse.unquote(request.args.get('baseImage')).replace(" ", "_")
         iteration = request.args.get('iteration', 1)
+        msg_uuid = request.args.get('msgUUID', None)
         print('Transfering style initialized for params: {}, {}, {}'.format(style_image, base_image, iteration))
 
-        send_experiment_feedback("Storing definition...")
+        send_experiment_feedback("Storing definition...", msg_uuid)
         definition_details = wml_client._store_definition(style_image, base_image, iteration)
         definition_url = wml_client.client.repository.get_definition_url(definition_details)
         definition_uid = wml_client.client.repository.get_definition_uid(definition_details)
 
-        send_experiment_feedback("Storing experiment...")
+        send_experiment_feedback("Storing experiment...", msg_uuid)
         experiment_details = wml_client._store_experiment(definition_url)
         experiment_uid = wml_client.client.repository.get_experiment_uid(experiment_details)
 
-        send_experiment_feedback("Running experiment...")
+        send_experiment_feedback("Running experiment...", msg_uuid)
         experiment_run_details = wml_client.client.experiments.run(experiment_uid, asynchronous=True)
         experiment_run_uid = wml_client.client.experiments.get_run_uid(experiment_run_details)
 
@@ -105,11 +110,12 @@ def init_transfer_style():
 
 @app.route("/images/transferStyle/<experiment_run_uid>", methods=["GET"])
 def get_transfer_style_status(experiment_run_uid):
+    msg_uuid = request.args.get('msgUUID', None)
     status = wml_client.client.experiments.get_status(experiment_run_uid)
     print(status)
     # status['current_iteration']
     state = status['state']
-    send_experiment_feedback("Running experiment: state changed to '{}'".format(state))
+    send_experiment_feedback("Running experiment: state changed to '{}'".format(state), msg_uuid)
     return Response(json.dumps(status), mimetype=u'application/json')
 
 
