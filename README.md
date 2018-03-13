@@ -6,12 +6,12 @@
 
 1. Modify files in `vcaps` to contain vcaps of your services.
 
-Run:
-```bash
-python server.py
-```
+2. Run:
+   ```bash
+   python server.py
+   ```
 
-Then, application is available at `127.0.0.1:8080`
+Application will be available at `127.0.0.1:8080`.
 
 
 ### Bluemix run
@@ -23,3 +23,5 @@ Then, application is available at `127.0.0.1:8080`
    cf login
    cf push
    ```
+   
+Application will be available on bluemix.
