@@ -1,4 +1,6 @@
-# Transfer Style - Sample App in Python
+# Style Transfer Sample Application in Python
+
+Merge the power of Watson Machine Learning with an image of your choice to see transfer of styles.
 
 Requirements:
 - python 3
