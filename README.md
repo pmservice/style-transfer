@@ -2,7 +2,7 @@
 
 Merge the power of Watson Machine Learning with an image of your choice to see transfer of styles.
 
-Requirements:
+## Requirements:
 - python 3
 - pip
 - Cloud Foundry Command Line Interface (cf CLI)
@@ -22,7 +22,7 @@ User also should have account on Bluemix with active us-south region. In us-sout
          }
    ```
    
-## Deploy2Bluemix - Fast track to working application
+## Deploy2Bluemix - Fast track to deploy application on IBM Cloud
 
 1. Create application using following button:
 
@@ -35,7 +35,9 @@ User also should have account on Bluemix with active us-south region. In us-sout
 7. Restart your application.
 6. Click `Visit App URL` to go to your application.
 
-## Initial configuration
+## Manual deployment 
+
+### Initial configuration
 
 1. Clone repository and enter cloned project directory:
    ```bash
@@ -46,7 +48,7 @@ User also should have account on Bluemix with active us-south region. In us-sout
  - `vcaps/wml.vcap` (wml)
  - `vcaps/cos.vcap` (cos).
 
-### Local run configuration
+### Deployment and run on local environment
 
 Run:
 ```bash
@@ -57,7 +59,7 @@ python server.py
 Application will be available at `127.0.0.1:8080`.
 
 
-### Bluemix run configuration
+### Deployment and run on IBM Cloud (Bluemix)
 
 1. Modify `manifest.yml` by choosing unique name for your host and passing it in place of `<your host name>`.
 2. Run:
