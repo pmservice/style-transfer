@@ -22,7 +22,7 @@ User also should have account on Bluemix with active us-south region. In us-sout
 
 Run:
 ```bash
-pip install requirements.txt
+pip install -r requirements.txt
 python server.py
 ```
 

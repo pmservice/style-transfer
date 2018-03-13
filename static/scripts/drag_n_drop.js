@@ -124,6 +124,8 @@ var transfer_style_clicked = function(evt){
         "</div>"
     )
 
+    window.scrollTo(0,document.body.scrollHeight);
+
     transfer_style(styleImage, baseImage, iterations)
     .then(function (data) {
         console.log('Successfully initialized style transfer.')
@@ -157,7 +159,8 @@ var transfer_style_clicked = function(evt){
                 "</div>"
             )
 
-            $("#cleanEnv").click(clean_env_clicked)
+            window.scrollTo(0,document.body.scrollHeight);
+            // $("#cleanEnv").click(clean_env_clicked)
         }).catch(function(error) {
             transfer_op_error(error)
         })
