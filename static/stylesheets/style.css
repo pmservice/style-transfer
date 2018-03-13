@@ -93,6 +93,13 @@ hr {
     margin-bottom: 8px;
 }
 
+.imageHeaders {
+    padding-top: 30px;
+    padding-bottom: 10px;
+    font-size: 105%;
+    font-weight: bold;
+}
+
 .centeringDiv {
  text-align: center;
 }
