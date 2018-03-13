@@ -2,6 +2,7 @@ import ibm_boto3
 import os
 from ibm_botocore.client import Config
 from ibm_botocore.exceptions import ClientError
+import datetime
 
 
 class COSHelper:
@@ -48,7 +49,7 @@ class COSHelper:
             file = open("./vgg19_weights_tf_dim_ordering_tf_kernels_notop.h5", "rb")
             bytes = file.read()
             file.close()
-            tmp_file_name = 'tmp'
+            tmp_file_name = 'tmp_' + datetime.datetime.now().isoformat()
             file = open(tmp_file_name, "wb")
             file.write(bytes)
             file.close()
@@ -58,7 +59,7 @@ class COSHelper:
 
     def save_image(self, file, filename, image_type, prefix=""):
         bucket = self._get_bucket(image_type)
-        tmp_file_name = 'tmp'
+        tmp_file_name = 'tmp_' + datetime.datetime.now().isoformat()
         file.save(tmp_file_name)
         bucket.upload_file(tmp_file_name, prefix + filename)
         os.remove(tmp_file_name)
@@ -66,7 +67,7 @@ class COSHelper:
 
     def get_image(self, filename, image_type, prefix=""):
         bucket = self._get_bucket(image_type)
-        tmp_file_name = 'tmp'
+        tmp_file_name = 'tmp_' + datetime.datetime.now().isoformat()
         bucket.download_file(prefix + filename, tmp_file_name)
 
         file = open(tmp_file_name, "rb")

@@ -67,6 +67,7 @@ def send_image():
 @app.route("/images/transferStyle", methods=["POST"])
 def init_transfer_style():
     try:
+        wml_client = WMLHelper(wml_vcap, cos_vcap, auth_endpoint, service_endpoint)
         style_image = urllib.parse.unquote(request.args.get('styleImage')).replace(" ", "_")
         base_image = urllib.parse.unquote(request.args.get('baseImage')).replace(" ", "_")
         iteration = request.args.get('iteration', 1)
