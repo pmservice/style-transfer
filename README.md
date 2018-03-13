@@ -1,7 +1,7 @@
 # Transfer Style - Sample App in Python
 
 Requirements:
-- python 3.5
+- python 3
 - pip
 - Cloud Foundry Command Line Interface (cf CLI)
 
@@ -27,9 +27,11 @@ User also should have account on Bluemix with active us-south region. In us-sout
    [![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/pmservice/style-transfer&appName=style-transfer&branch=master)
 2. Choose name for application, region and organization. Configure integration tools. Click `Deploy`.
 3. Open github repository by clicking `Git` tile in `CODE` section.
-4. In github edit `vcaps/cos.vcap` with COS credentials.
-5. Go to your Bluemix account and restart your application.
-6. Click `View app` to go to your application.
+4. In github edit `vcaps/cos.vcap` with COS credentials. Commit your change.
+5. Go to your Bluemix account.
+6. Bind wml service to your app (Use `Connections` tab in your application view).
+7. Restart your application.
+6. Click `Visit App URL` to go to your application.
 
 ## Initial configuration
 
