@@ -151,7 +151,7 @@ var transfer_style_clicked = function(evt){
                 "</div>\n" +
                 "<br />\n" +
                 "<div class=\"centeredDiv\">\n" +
-                "<button id=\"downloadImage\" type=\"button\" class=\"btn btn-default btn-lg bottomSpaced\" type=\"submit\" onclick=\"window.open('" + url + "')\">Download image</button>\n" +
+                "<button id=\"downloadImage\" type=\"button\" class=\"btn btn-default btn-lg\" type=\"submit\" onclick=\"window.open('" + url + "')\">Download image</button>\n" +
                 //"<button id=\"cleanEnv\" type=\"button\" class=\"btn btn-default btn-lg bottomSpaced\">Clean environment</button>\n" +
                 "</div>" +
                 "</div>"
