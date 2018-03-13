@@ -36,13 +36,18 @@
   	});
 
 </script>
-<h3>Make your photos <span style="color: #337ab7; font-style: italic">stylish</span></h3>
-<hr />
+<div id="header">
+	<h3>STYLE TRANSFER SAMPLE APPLICATION</h3>
+	<span class="headerText">Merge the power of <a href="https://console.bluemix.net/catalog/services/machine-learning" class="headerLink">Watson Machine Learning</a><br />with an image of your choice to see transfer of styles.</span>
+</div>
+<br />
+<br />
+<br />
 	<div class="centeringDiv bottomSpaced">
 		<div id="styleImage" class="droparea" style="display: inline-block">
 			Drag & drop style sample image
 		</div>
-		<img src="/staticImages/plus.png" style="width: 40px; margin: 35px; display: inline-block" />
+		<img src="/staticImages/plus.png" style="width: 40px; margin: 110px; display: inline-block" />
 		<div id="baseImage" class="droparea" style="display: inline-block">
 			Drag & drop base image
 		</div>
@@ -50,7 +55,7 @@
 	<div id="uploadImagesErrors" class="alert alert-danger" style="display: none"></div>
 	<div class="centeringDiv">
 		<div class="centeredDiv bottomSpaced">
-			<div style="width: 916px; text-align: left">
+			<div style="width: 866px; text-align: left">
 			<label for="iterations" style="margin-right: 5px" class="inline">Intensity: </label>
 			<div class="slidecontainer inline" style="width: 200px">
 				<input type="range" min="1" max="20" value="1" id="iterationsSlider" />
@@ -60,7 +65,7 @@
 		</div>
 		<br />
 		<div class="centeredDiv bottomSpaced">
-			<button id="runButton" type="button" class="btn btn-primary btn-lg inline">Transfer style</button>
+			<button id="runButton" type="button" class="btn btn-default btn-lg inline">Transfer style</button>
 		</div>
 		<div id="resultImage"></div>
 		<div id="resultErrors" class="alert alert-danger" style="display: none"></div>

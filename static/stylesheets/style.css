@@ -1,14 +1,50 @@
-body {
-    background-image: url("/staticImages/background.png");
-    background-size: cover;
+body, html {
+    background-color: white;
+    margin: 0;
+    padding: 0;
     font-family: Helvetica Neue, sans-serif;
+    color: #51768e;
 }
 
 h3 {
-	color: #797979;
 	font-family: Helvetica Neue Light, Helvetica Neue, sans-serif;
-	padding-top: 10px;
+    margin: 0;
+    margin-bottom: 30px;
+    padding: 0;
+}
+
+#header {
+    width: 100%;
+    background-color: WhiteSmoke;
+    margin: 0;
+    padding: 40px 0 40px 0;
     text-align: center;
+}
+
+.headerText {
+    font-size: 110%;
+}
+
+.headerLink {
+    color: #337ab7;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.headerLink:hover {
+    text-decoration: none;
+}
+
+/*.headerLink:visited {
+    color: #337ab7;
+    text-decoration: none;
+}*/
+
+.grayArea {
+    width: 100%;
+    background-color: WhiteSmoke;
+    padding: 30px 0 30px 0;
+    margin: 0;
 }
 
 hr {
@@ -17,7 +53,7 @@ hr {
 }
 
 .droparea {
-    width: 400px;
+    width: 300px;
     height: 300px;
     border-style: dashed;
     border-width: 3px;

@@ -144,14 +144,15 @@ var transfer_style_clicked = function(evt){
             url = encodeURI("/images/" + resultImage + "?type=results&prefix=" + runId + "/transfered_images/")
 
             $("#resultImage").html(
-                "<br />\n" +
+                "<div class=\"grayArea\">" +
                 "<div class=\"centeredDiv\">\n" +
                 "<img src=\"" + url +  "\" class=\"bottomSpaced resultImage\" />\n" +
                 "</div>\n" +
                 "<br />\n" +
                 "<div class=\"centeredDiv\">\n" +
-                "<button id=\"downloadImage\" type=\"button\" class=\"btn btn-primary btn-lg bottomSpaced\" type=\"submit\" onclick=\"window.open('" + url + "')\">Download image</button>\n" +
+                "<button id=\"downloadImage\" type=\"button\" class=\"btn btn-default btn-lg bottomSpaced\" type=\"submit\" onclick=\"window.open('" + url + "')\">Download image</button>\n" +
                 //"<button id=\"cleanEnv\" type=\"button\" class=\"btn btn-default btn-lg bottomSpaced\">Clean environment</button>\n" +
+                "</div>" +
                 "</div>"
             )
 
