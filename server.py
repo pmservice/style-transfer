@@ -19,7 +19,7 @@ service_endpoint = 'https://s3-api.us-geo.objectstorage.softlayer.net'
 cos_client = COSHelper(wml_vcap, cos_vcap, auth_endpoint, service_endpoint)
 wml_client = WMLHelper(wml_vcap, cos_vcap, auth_endpoint, service_endpoint)
 
-filename = "vgg19_weights_tf_dim_ordering_tf_kernels_notop.h5"
+filename = "data/vgg19_weights_tf_dim_ordering_tf_kernels_notop.h5"
 cos_client.save_local_file(filename, "data")
 
 

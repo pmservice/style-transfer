@@ -43,10 +43,11 @@ class COSHelper:
         objs = list(bucket.objects.filter(Prefix=key))
         return len(objs) > 0 and objs[0].key == key
 
-    def save_local_file(self, filename, image_type, prefix=""):
+    def save_local_file(self, path, image_type, prefix=""):
         bucket = self._get_bucket(image_type)
+        filename = path.split("/")[-1]
         if not self.key_exists(bucket, filename):
-            file = open("./vgg19_weights_tf_dim_ordering_tf_kernels_notop.h5", "rb")
+            file = open("./" + path, "rb")
             bytes = file.read()
             file.close()
             tmp_file_name = 'tmp_' + datetime.datetime.now().isoformat()

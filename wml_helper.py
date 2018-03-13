@@ -20,7 +20,7 @@ class WMLHelper:
             self.client.repository.DefinitionMetaNames.EXECUTION_COMMAND: "python style_transfer.py {} {} {}_ --iter {}".format(base_image, style_image, base_image.split(".")[0], iteration)
         }
 
-        filename_definition = 'STYLE.zip'
+        filename_definition = 'data/STYLE.zip'
 
         return self.client.repository.store_definition(filename_definition, definition_metadata)
 

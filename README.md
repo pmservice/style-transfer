@@ -1,25 +1,40 @@
 # Transfer Style - Sample App in Python
 
-## Getting started
+Requirements:
+- python 3.5
+- pip
+- Cloud Foundry Command Line Interface (cf CLI)
 
-### Local run
+User also should have account on Bluemix with active us-south region. In us-south region should be prepared following services:
+- IBM Watson Machine Learning (wml)
+- IBM Cloud Object Storage (cos)
 
-1. Modify files in `vcaps` to contain vcaps of your services.
+## Initial configuration
 
-2. Run:
+1. Clone repository and enter cloned repo:
    ```bash
-   python server.py
+   git clone https://github.com/pmservice/style-transfer.git
+   cd style-transfer
    ```
+2. Get wml and cos vcaps. Update with your services vcaps folowing files: `vcaps/wml.vcap` and `vcaps/cos.vcap`.
+
+### Local run configuration
+
+Run:
+```bash
+pip install requirements.txt
+python server.py
+```
 
 Application will be available at `127.0.0.1:8080`.
 
 
-### Bluemix run
+### Bluemix run configuration
 
-1. Modify files in `vcaps` and `manifest.yml`.
+1. Modify `manifest.yml` by choosing unique name for your host and passing it in place of `<your host name>`.
 2. Run:
    ```bash
-   cf api <API-endpoint>
+   cf api https://api.ng.bluemix.net
    cf login
    cf push
    ```
