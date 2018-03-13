@@ -22,7 +22,7 @@ User also should have account on Bluemix with active us-south region. In us-sout
          }
    ```
    
-## Deploy2Bluemix - Fast track to deploy application on IBM Cloud
+## Automatic deployment (Deploy2Bluemix) - Fast track to deploy application on IBM Cloud
 
 1. Create application using following button:
 
