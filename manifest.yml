@@ -1,8 +1,5 @@
 applications:
 - path: .
   memory: 256M
-  instances: 1
-  domain: mybluemix.net
   name: transfer-style-sample-app
-  host: <your host name>
-  disk_quota: 1024M
+  random-route: true

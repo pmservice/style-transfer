@@ -9,6 +9,16 @@ User also should have account on Bluemix with active us-south region. In us-sout
 - IBM Watson Machine Learning (wml)
 - IBM Cloud Object Storage (cos)
 
+## Deploy2Bluemix - Fast track to working application
+
+1. Create application using following button:
+   [![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/pmservice/style-transfer&appName=style-transfer&branch=master)
+2. Choose name for application, region and organization. Configure integration tools. Click `Deploy`.
+3. Open github repository by clicking `Git` tile in `CODE` section.
+4. In github edit `vcaps/cos.vcap` with COS credentials.
+5. Go to your Bluemix account and restart your application.
+6. Click `View app` to go to your application.
+
 ## Initial configuration
 
 1. Clone repository and enter cloned repo:
@@ -36,7 +46,7 @@ Application will be available at `127.0.0.1:8080`.
    ```bash
    cf api https://api.ng.bluemix.net
    cf login
-   cf push
+   cf push -f bx_manifest.yml
    ```
    
 Application will be available on bluemix.
