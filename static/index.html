@@ -42,7 +42,7 @@
 		<div id="styleImage" class="droparea" style="display: inline-block">
 			Drag & drop style sample image
 		</div>
-		<img src="/staticImages/style_arrow.png" style="width: 100px; margin: 5px; display: inline-block" />
+		<img src="/staticImages/plus.png" style="width: 40px; margin: 35px; display: inline-block" />
 		<div id="baseImage" class="droparea" style="display: inline-block">
 			Drag & drop base image
 		</div>
@@ -50,11 +50,16 @@
 	<div id="uploadImagesErrors" class="alert alert-danger" style="display: none"></div>
 	<div class="centeringDiv">
 		<div class="centeredDiv bottomSpaced">
+			<div style="width: 916px; text-align: left">
 			<label for="iterations" style="margin-right: 5px" class="inline">Intensity: </label>
 			<div class="slidecontainer inline" style="width: 200px">
 				<input type="range" min="1" max="20" value="1" id="iterationsSlider" />
 			</div>
 			<span id="iterations" class="inline" style="margin-right: 20px"></span>
+			</div>
+		</div>
+		<br />
+		<div class="centeredDiv bottomSpaced">
 			<button id="runButton" type="button" class="btn btn-primary btn-lg inline">Transfer style</button>
 		</div>
 		<div id="resultImage"></div>
