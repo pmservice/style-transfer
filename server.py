@@ -13,7 +13,7 @@ socketio = SocketIO(app)
 wml_vcap = get_wml_vcap()
 cos_vcap = get_cos_vcap()
 
-auth_endpoint = 'https://iam.bluemix.net/oidc/token' # TODO
+auth_endpoint = 'https://iam.bluemix.net/oidc/token' # only for us-south
 service_endpoint = 'https://s3-api.us-geo.objectstorage.softlayer.net'
 
 cos_client = COSHelper(wml_vcap, cos_vcap, auth_endpoint, service_endpoint)
