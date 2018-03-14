@@ -3,7 +3,7 @@ body, html {
     margin: 0;
     padding: 0;
     font-family: Helvetica Neue, sans-serif;
-    color: #51768e;
+    color: #5A6872;
 }
 
 h3 {
@@ -15,7 +15,7 @@ h3 {
 
 #header {
     width: 100%;
-    background-color: WhiteSmoke;
+    background-color: #F5F7FA;
     margin: 0;
     padding: 40px 0 40px 0;
     text-align: center;
@@ -25,31 +25,22 @@ h3 {
     font-size: 110%;
 }
 
-.headerLink {
-    color: #337ab7;
+.headerLink, .headerLink:visited {
+    color: #3D70B2;
     font-weight: bold;
     text-decoration: none;
 }
 
-.headerLink:hover {
+.headerLink:hover, .headerLink:visited:hover {
     text-decoration: none;
+    color: #5A6872;
 }
-
-/*.headerLink:visited {
-    color: #337ab7;
-    text-decoration: none;
-}*/
 
 .grayArea {
     width: 100%;
-    background-color: WhiteSmoke;
+    background-color: #F5F7FA;
     padding: 60px 0 60px 0;
     margin: 0;
-}
-
-hr {
-    border-color: lightgray;
-    border-width: 1px;
 }
 
 .droparea {

@@ -70,6 +70,7 @@ def send_image():
 
 @app.route("/images/transferStyle", methods=["POST"])
 def init_transfer_style():
+    global wml_client
     try:
         wml_client = WMLHelper(wml_vcap, cos_vcap, auth_endpoint, service_endpoint)
         style_image = urllib.parse.unquote(request.args.get('styleImage')).replace(" ", "_")
@@ -110,6 +111,7 @@ def init_transfer_style():
 
 @app.route("/images/transferStyle/<experiment_run_uid>", methods=["GET"])
 def get_transfer_style_status(experiment_run_uid):
+    global wml_client
     msg_uuid = request.args.get('msgUUID', None)
     status = wml_client.client.experiments.get_status(experiment_run_uid)
     print(status)
@@ -138,6 +140,7 @@ def get_image(image_name):
 
 @app.route("/cleanEnv", methods=["POST"])
 def clean_env():
+    global wml_client
     style_image = urllib.parse.unquote(request.args.get('style_image')).replace(" ", "_")
     base_image = urllib.parse.unquote(request.args.get('base_image')).replace(" ", "_")
     result_image = urllib.parse.unquote(request.args.get('result_image')).replace(" ", "_")
@@ -167,4 +170,3 @@ def clean_env():
 
 print('Running server...')
 socketio.run(app, host='0.0.0.0', port=8080)
-#app.run('0.0.0.0', 8080)
