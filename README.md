@@ -22,20 +22,7 @@ User also should have account on Bluemix with active us-south region. In us-sout
          }
    ```
    
-## Automatic deployment (Deploy2Bluemix) - Fast track to deploy application on IBM Cloud
-
-1. Create application using following button:
-
-   [![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/pmservice/style-transfer&appName=style-transfer&branch=master)
-2. Choose name for application, region and organization. Configure integration tools. Click `Deploy`.
-3. Open github repository by clicking `Git` tile in `CODE` section.
-4. In github edit `vcaps/cos.vcap` with COS credentials. Commit your change.
-5. Go to your Bluemix account.
-6. Bind wml service to your app (Use `Connections` tab in your application view).
-7. Restart your application.
-6. Click `Visit App URL` to go to your application.
-
-## Manual deployment 
+## Deployment 
 
 ### Initial configuration
 
