@@ -48,7 +48,7 @@ Application will be available at `127.0.0.1:8080`.
 
 ### Deployment and run on IBM Cloud (Bluemix)
 
-1. Modify `manifest.yml` by choosing unique name for your host and passing it in place of `<your host name>`.
+1. Modify `bx_manifest.yml` by choosing unique name for your host and passing it in place of `<your host name>`.
 2. Run:
    ```bash
    cf api https://api.ng.bluemix.net
