@@ -1,6 +1,8 @@
-# Transfer Style - Sample App in Python
+# Style Transfer Sample Application in Python
 
-Requirements:
+Merge the power of Watson Machine Learning with an image of your choice to see transfer of styles.
+
+## Requirements:
 - python 3
 - pip
 - Cloud Foundry Command Line Interface (cf CLI)
@@ -20,20 +22,9 @@ User also should have account on Bluemix with active us-south region. In us-sout
          }
    ```
    
-## Deploy2Bluemix - Fast track to working application
+## Deployment 
 
-1. Create application using following button:
-
-   [![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/pmservice/style-transfer&appName=style-transfer&branch=master)
-2. Choose name for application, region and organization. Configure integration tools. Click `Deploy`.
-3. Open github repository by clicking `Git` tile in `CODE` section.
-4. In github edit `vcaps/cos.vcap` with COS credentials. Commit your change.
-5. Go to your Bluemix account.
-6. Bind wml service to your app (Use `Connections` tab in your application view).
-7. Restart your application.
-6. Click `Visit App URL` to go to your application.
-
-## Initial configuration
+### Initial configuration
 
 1. Clone repository and enter cloned project directory:
    ```bash
@@ -44,7 +35,7 @@ User also should have account on Bluemix with active us-south region. In us-sout
  - `vcaps/wml.vcap` (wml)
  - `vcaps/cos.vcap` (cos).
 
-### Local run configuration
+### Deployment and run on local environment
 
 Run:
 ```bash
@@ -55,9 +46,9 @@ python server.py
 Application will be available at `127.0.0.1:8080`.
 
 
-### Bluemix run configuration
+### Deployment and run on IBM Cloud (Bluemix)
 
-1. Modify `manifest.yml` by choosing unique name for your host and passing it in place of `<your host name>`.
+1. Modify `bx_manifest.yml` by choosing unique name for your host and passing it in place of `<your host name>`.
 2. Run:
    ```bash
    cf api https://api.ng.bluemix.net
