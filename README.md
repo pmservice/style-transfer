@@ -2,7 +2,7 @@
 
 Merge the power of Watson Machine Learning with an image of your choice to see transfer of styles.
 
-![alt text][static/images/screen.jpg]
+<img src="https://github.com/pmservice/style-transfer/raw/master/static/images/screen.jpg" width="500" />
 
 ## Requirements:
 - python 3
