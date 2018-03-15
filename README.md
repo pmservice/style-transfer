@@ -2,7 +2,7 @@
 
 Merge the power of Watson Machine Learning with an image of your choice to see transfer of styles.
 
-![alt text][images/screen.jpg]
+![alt text][static/images/screen.jpg]
 
 ## Requirements:
 - python 3
