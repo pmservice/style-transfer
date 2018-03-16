@@ -123,7 +123,7 @@ var transfer_style_clicked = function(evt){
         "<img src=\"/staticImages/loading_spinner.gif\" style=\"width: 60px; padding-right: 10px\" /><span id=\"progressMessage\" style=\"color: gray\">Initializing...</span>\n" +
         "</div>"
     )
-    $("#resultErrors").attr("style", "display: block");
+    $("#resultImage").attr("style", "display: block");
 
     window.scrollTo(0,document.body.scrollHeight);
 
