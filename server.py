@@ -93,7 +93,18 @@ def init_transfer_style():
         experiment_run_details = wml_client.client.experiments.run(experiment_uid, asynchronous=True)
         experiment_run_uid = wml_client.client.experiments.get_run_uid(experiment_run_details)
 
-        training_run_uids = wml_client.client.experiments.get_training_uids(experiment_run_details)
+        tries_no = 10
+        training_run_uids = None
+        while tries_no > 0 and training_run_uids is None:
+            tries_no -= 1
+            try:
+                training_run_uids = wml_client.client.experiments.get_training_uids(experiment_run_details)
+            except Exception as e:
+                error = e
+
+        if training_run_uids is None:
+            abort(500, "Couldn't get training uids in time: " + str(error))
+
         training_run_uid = training_run_uids[0]
 
         result = {
