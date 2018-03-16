@@ -3,6 +3,7 @@ from flask_socketio import SocketIO, join_room
 import urllib
 from werkzeug.utils import secure_filename
 import json
+import time
 from cos_helper import COSHelper
 from wml_helper import WMLHelper
 from get_vcap import get_wml_vcap, get_cos_vcap
@@ -98,9 +99,11 @@ def init_transfer_style():
         while tries_no > 0 and training_run_uids is None:
             tries_no -= 1
             try:
+                experiment_run_details = wml_client.client.experiments.get_run_details(experiment_run_uid)
                 training_run_uids = wml_client.client.experiments.get_training_uids(experiment_run_details)
             except Exception as e:
                 error = e
+            time.sleep(1)
 
         if training_run_uids is None:
             abort(500, "Couldn't get training uids in time: " + str(error))
