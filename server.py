@@ -19,7 +19,6 @@ service_endpoint = 'https://s3-api.us-geo.objectstorage.softlayer.net'
 
 cos_client = COSHelper(wml_vcap, cos_vcap, auth_endpoint, service_endpoint)
 wml_client = WMLHelper(wml_vcap, cos_vcap, auth_endpoint, service_endpoint)
-wml_client.client.wml_token = "test"
 
 filename = "data/vgg19_weights_tf_dim_ordering_tf_kernels_notop.h5"
 cos_client.save_local_file(filename, "data")
@@ -75,6 +74,7 @@ def init_transfer_style():
     global wml_client
     try:
         wml_client = WMLHelper(wml_vcap, cos_vcap, auth_endpoint, service_endpoint)
+
         style_image = urllib.parse.unquote(request.args.get('styleImage')).replace(" ", "_")
         base_image = urllib.parse.unquote(request.args.get('baseImage')).replace(" ", "_")
         iteration = request.args.get('iteration', 1)
@@ -157,7 +157,6 @@ def get_image(image_name):
 
 @app.route("/cleanEnv", methods=["POST"])
 def clean_env():
-    global wml_client
     wml_client = WMLHelper(wml_vcap, cos_vcap, auth_endpoint, service_endpoint)
 
     style_image = urllib.parse.unquote(request.args.get('style_image')).replace(" ", "_")

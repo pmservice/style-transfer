@@ -2,7 +2,7 @@ from watson_machine_learning_client import WatsonMachineLearningAPIClient
 
 class WMLHelper:
     def __init__(self, wml_vcap, cos_vcap, auth_endpoint, service_endpoint):
-        self.client = WatsonMachineLearningAPIClient(wml_vcap)
+        self.client = WatsonMachineLearningAPIClient(wml_vcap.copy())
         self.cos_vcap = cos_vcap
         self.auth_endpoint = auth_endpoint
         self.service_endpoint = service_endpoint
