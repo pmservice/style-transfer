@@ -51,11 +51,16 @@ Application will be available at `127.0.0.1:8080`.
 ### Deployment and run on IBM Cloud (Bluemix)
 
 1. Modify `bx_manifest.yml` by choosing unique name for your host and passing it in place of `<your host name>`.
+
+**Important**: You should update `domain` regarding your region (It is set for US-South). For example for UK region value should be `eu-gb.mybluemix.net`.
+
 2. Run:
    ```bash
    cf api https://api.ng.bluemix.net
    cf login
    cf push -f bx_manifest.yml
    ```
+   
+ **Important**: You should update API URL regarding your region (`https://api.ng.bluemix.net` for US-South). For example for UK region URL should be `https://api.eu-gb.bluemix.net/`.
    
 Application will be available on IBM Cloud.
