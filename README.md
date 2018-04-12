@@ -9,10 +9,10 @@ Merge the power of Watson Machine Learning with an image of your choice to see t
 - pip
 - Cloud Foundry Command Line Interface (cf CLI)
 
-User also should have account on Bluemix with active us-south region. In us-south region the following services should be prepared:
-- IBM Watson Machine Learning (wml). Please note that `Lite` (free) plan is offered.
-- IBM Cloud Object Storage (cos). `Lite` plan is offered. After you create COS instance:
-   - go to your COS dashboard,
+User also should have account on IBM Cloud with active us-south region. In us-south region the following services should be prepared:
+- IBM Watson Machine Learning (WML). Please note that `Lite` (free) plan is offered.
+- IBM Cloud Object Storage (COS). `Lite` plan is offered. After you create COS instance:
+   - go to your COS instance in [IBM Cloud Dashboard](https://console.bluemix.net/dashboard),
    - in `Service credentials` tab, click on `New Credential` and add inline configuration parameter: `{"HMAC":true}`,
    - and click `Add`.
 
@@ -34,8 +34,8 @@ User also should have account on Bluemix with active us-south region. In us-sout
    cd style-transfer
    ```
 2. Update with your services credentials the folowing files: 
- - `vcaps/wml.vcap` (wml)
- - `vcaps/cos.vcap` (cos).
+ - `vcaps/wml.vcap` (WML)
+ - `vcaps/cos.vcap` (COS).
 
 ### Deployment and run on local environment
 
@@ -58,4 +58,4 @@ Application will be available at `127.0.0.1:8080`.
    cf push -f bx_manifest.yml
    ```
    
-Application will be available on bluemix.
+Application will be available on IBM Cloud.
