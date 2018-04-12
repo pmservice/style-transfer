@@ -1,6 +1,5 @@
 {
   "url": "https://ibm-watson-ml.mybluemix.net",
-  "access_key": <access key>,
   "username": <username>,
   "password": <password>,
   "instance_id": <instance id>
