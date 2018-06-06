@@ -54,7 +54,9 @@ Application will be available at `127.0.0.1:8080`.
 
 **Important**: You should update `domain` regarding your region (It is set for US-South). For example for UK region value should be `eu-gb.mybluemix.net`.
 
-2. Run:
+2. Install CF command line interface: https://docs.cloudfoundry.org/cf-cli/install-go-cli.html
+
+3. Run:
    ```bash
    cf api https://api.ng.bluemix.net
    cf login
