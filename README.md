@@ -33,7 +33,7 @@ User also should have account on IBM Cloud with active us-south region. In us-so
    git clone https://github.com/pmservice/style-transfer.git
    cd style-transfer
    ```
-2. Update with your services credentials the folowing files: 
+2. Update with your services credentials the following files: 
  - `vcaps/wml.vcap` (WML)
  - `vcaps/cos.vcap` (COS).
 
@@ -50,7 +50,7 @@ Application will be available at `127.0.0.1:8080`.
 
 ### Deployment and run on IBM Cloud (Bluemix)
 
-1. Modify `bx_manifest.yml` by choosing unique name for your host and passing it in place of `<your host name>`.
+1. Modify `bx_manifest.yml` by choosing an unique name for your host and passing it in place of `<your host name>`.
 
 **Important**: You should update `domain` regarding your region (It is set for US-South). For example for UK region value should be `eu-gb.mybluemix.net`.
 
@@ -63,6 +63,6 @@ Application will be available at `127.0.0.1:8080`.
    cf push -f bx_manifest.yml
    ```
    
- **Important**: You should update API URL regarding your region (`https://api.ng.bluemix.net` for US-South). For example for UK region URL should be `https://api.eu-gb.bluemix.net/`.
+ **Important**: You should update API URL regarding your region (`https://api.ng.bluemix.net` for US-South). For example, for UK region URL should be `https://api.eu-gb.bluemix.net/`.
    
 Application will be available on IBM Cloud.
