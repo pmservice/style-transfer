@@ -1,4 +1,4 @@
-urllib3==1.22
+urllib3==1.24.2
 ibm-cos-sdk==2.0.0
 watson-machine-learning-client==0.3.702
 cfenv==0.5.3
