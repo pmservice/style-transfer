@@ -1,3 +1,9 @@
+# Deprecation
+
+This repository will be archived. Please navigate to: https://github.com/IBM/watson-machine-learning-samples
+
+---
+
 # Style Transfer Sample Application in Python
 
 Merge the power of Watson Machine Learning with an image of your choice to see transfer of styles.
